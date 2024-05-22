@@ -9,7 +9,7 @@ class Item(models.Model):
     price = models.IntegerField()
     condition=models.CharField(max_length=100)
     # category = models
-    image = models.ImageField(null=True, blank=True, upload_to='seller/static/img/')
+    image = models.URLField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title
