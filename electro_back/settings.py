@@ -70,6 +70,11 @@ CORS_ORIGIN_WHITELIST = (
 
 CSRF_TRUSTED_ORIGINS = ['https://electro-mart-backend.onrender.com', 'https://*.127.0.0.1']
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'https://electro-mart-eta.vercel.app',
+]
+
 ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost:5173'
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -87,7 +92,7 @@ AUTHENTICATION_BACKENDS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication', 
+        'rest_framework.authentication.SessionAuthentication', 
         'rest_framework.authentication.TokenAuthentication', 
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
@@ -98,6 +103,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -105,7 +112,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'electro_back.urls'
