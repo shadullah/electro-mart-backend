@@ -55,26 +55,40 @@ INSTALLED_APPS = [
 
 # AUTH_USER_MODEL = 'account.CustomUser'
 
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:5173',
+)
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:5173",
+# ]
+
+CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1']
+
+ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost:5173'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 AUTHENTICATION_BACKENDS = [
+    # 'path.to.Emailbackend',
     'account.backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend', 
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-]
+
 
 # my changes end
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication', 
+        # 'rest_framework.authentication.SessionAuthentication', 
         'rest_framework.authentication.TokenAuthentication', 
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PERMISSION_CLASSES': [
    'rest_framework.permissions.AllowAny',
+#    'rest_framework.permissions.IsAuthenticated',
 ]
 }
 

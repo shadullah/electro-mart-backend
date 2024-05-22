@@ -2,7 +2,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from . import serializers
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate,login,logout, get_backends
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
@@ -25,6 +25,7 @@ class UserRegistrationView(APIView):
 
         if serializer.is_valid():
             user = serializer.save()
+            print(user)
             return Response("user signup successfull")
         return Response(serializer.errors)
     
@@ -52,9 +53,12 @@ class UserLoginView(APIView):
 
             user = authenticate(username=email, password=password)
             # user = authenticate(username=username, password=password)
-            login(req, user)
+            
 
             if user:
+                backend = 'account.backends.EmailBackend'
+                login(req, user, backend=backend)
+
                 token, _ = Token.objects.get_or_create(user=user)
                 print(token)
                 return Response({'token': token.key, 'user_id': user.id})
@@ -64,15 +68,18 @@ class UserLoginView(APIView):
 
 
 class UserLogoutView(APIView):
-    # authentication_classes = [BasicAuthentication, TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication,TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, req):
         try:
+            print(req.user)
             req.user.auth_token.delete()
+            logout(req)
+            redirect("login")
+            return Response({"message": "logout Successfull"})
         except:
-            return Response("token not found")
-        logout(req)
-        return redirect('login')
+            return Response({"message":"failed"})
+        # return redirect('login')
 
 class UserListView(viewsets.ModelViewSet):
     queryset = User.objects.all()
