@@ -70,8 +70,6 @@ CORS_ORIGIN_WHITELIST = (
 
 CSRF_TRUSTED_ORIGINS = ['https://electro-mart-backend.onrender.com/', 'https://*.127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['https://*.127.0.0.1']
-
 ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost:5173'
 
 CORS_ALLOW_ALL_ORIGINS = True
