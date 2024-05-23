@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    title = models.CharField(max_length=40)
-    description= models.TextField(max_length=120)
+    title = models.CharField(max_length=120)
+    description= models.TextField(max_length=1200)
     price = models.IntegerField()
     condition=models.CharField(max_length=100)
     # category = models
