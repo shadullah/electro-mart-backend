@@ -75,7 +75,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://electro-mart-eta.vercel.app',
 ]
 
-ACCESS_CONTROL_ALLOW_ORIGIN = 'http://localhost:5173'
+ACCESS_CONTROL_ALLOW_ORIGIN = ['http://localhost:5173', 'https://electro-mart-eta.vercel.app']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -98,7 +98,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PERMISSION_CLASSES': [
    'rest_framework.permissions.AllowAny',
-   'rest_framework.permissions.IsAuthenticated',
+#    'rest_framework.permissions.IsAuthenticated',
 ]
 }
 
