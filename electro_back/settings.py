@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
 ]
 
 # my changes new
@@ -61,7 +62,7 @@ INSTALLED_APPS = [
 # AUTH_USER_MODEL = 'account.CustomUser'
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:5173',
+    'http://localhost:5173', 'https://electro-mart-eta.vercel.app/'
 )
 
 # CORS_ALLOWED_ORIGINS = [
