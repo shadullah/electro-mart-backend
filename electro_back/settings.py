@@ -149,45 +149,45 @@ WSGI_APPLICATION = 'electro_back.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASS"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
-}
-
 # DATABASES = {
-#     'default': dj_database_url.config(        # Replace this value with your local database's connection string.        
-#         default='postgres://electro_mart_user:qNlC7zwpf22bU3Kr0hj7UKBuXBoaFFph@dpg-cp73bvi0si5c73ango00-a.oregon-postgres.render.com/electro_mart'   )}
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': env("DB_NAME"),
+#         'USER': env("DB_USER"),
+#         'PASSWORD': env("DB_PASS"),
+#         'HOST': env("DB_HOST"),
+#         'PORT': env("DB_PORT"),
+#     }
+# }
 
-DEBUG = env('ENVIRONMENT') == 'development'
+DATABASES = {
+    'default': dj_database_url.config(        # Replace this value with your local database's connection string.        
+        default=DATABASE_URL, conn_max_age=1000   )}
 
-if env('ENVIRONMENT') == 'development':
-    DEBUG = True
-else:
-    DEBUG = False
+# DEBUG = env('ENVIRONMENT') == 'development'
 
-if env('ENVIRONMENT') == 'development':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env('DB_NAME'),
-            'USER': env('DB_USER'),
-            'PASSWORD': env('DB_PASS'),
-            'HOST': env('DB_HOST'),
-            'PORT': env('DB_PORT'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=env('DATABASE_URL')
-        )
-    }
+# if env('ENVIRONMENT') == 'development':
+#     DEBUG = True
+# else:
+#     DEBUG = False
+
+# if env('ENVIRONMENT') == 'development':
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': env('DB_NAME'),
+#             'USER': env('DB_USER'),
+#             'PASSWORD': env('DB_PASS'),
+#             'HOST': env('DB_HOST'),
+#             'PORT': env('DB_PORT'),
+#         }
+#     }
+# else:
+#     DATABASES = {
+#         'default': dj_database_url.config(
+#             default=env('DATABASE_URL')
+#         )
+#     }
 
 
 # Password validation
