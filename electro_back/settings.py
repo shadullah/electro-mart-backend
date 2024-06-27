@@ -31,6 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env("SECRET_KEY")
 # ENCRYPT_KEY = env('ENCRYPT_KEY')
+DATABASE_URL = "postgresql://postgres:jXkkPmDGsIHTWZMFQNofTfbTbotGbbEb@roundhouse.proxy.rlwy.net:15803/railway"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
