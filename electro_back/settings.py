@@ -170,8 +170,23 @@ if env('ENVIRONMENT') == 'development':
 else:
     DEBUG = False
 
-if env('ENVIRONMENT') == 'production':
-    DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
+if env('ENVIRONMENT') == 'development':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': env('DB_NAME'),
+            'USER': env('DB_USER'),
+            'PASSWORD': env('DB_PASS'),
+            'HOST': env('DB_HOST'),
+            'PORT': env('DB_PORT'),
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=env('DATABASE_URL')
+        )
+    }
 
 
 # Password validation
