@@ -30,6 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = env("SECRET_KEY")
+# ENCRYPT_KEY = env('ENCRYPT_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 
     'account',
     'seller',
+    'categories',
 
     'corsheaders',
     'rest_framework',
@@ -157,9 +159,25 @@ WSGI_APPLICATION = 'electro_back.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.config(        # Replace this value with your local database's connection string.        
+#         default='postgres://electro_mart_user:qNlC7zwpf22bU3Kr0hj7UKBuXBoaFFph@dpg-cp73bvi0si5c73ango00-a.oregon-postgres.render.com/electro_mart'   )}
+
 DATABASES = {
-    'default': dj_database_url.config(        # Replace this value with your local database's connection string.        
-        default='postgres://electro_mart_user:qNlC7zwpf22bU3Kr0hj7UKBuXBoaFFph@dpg-cp73bvi0si5c73ango00-a.oregon-postgres.render.com/electro_mart'   )}
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+DEBUG = env('ENVIRONMENT') == 'development'
+
+if env('ENVIRONMENT') == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
+
+if env('ENVIRONMENT') == 'production':
+    DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
 
 
 # Password validation
