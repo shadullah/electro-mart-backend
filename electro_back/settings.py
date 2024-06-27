@@ -65,7 +65,7 @@ INSTALLED_APPS = [
 # AUTH_USER_MODEL = 'account.CustomUser'
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:5173', 'https://electro-mart-eta.vercel.app/'
+    'http://localhost:5173', 'https://electro-mart-eta.vercel.app/','https://electro-mart-backend.up.railway.app/'
 )
 
 # CORS_ALLOWED_ORIGINS = [
@@ -79,11 +79,13 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.127.0.0.1',
     'http://localhost:5173',
     'https://electro-mart-eta.vercel.app',
+    'https://electro-mart-backend.up.railway.app'
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'https://electro-mart-eta.vercel.app',
+    'https://electro-mart-backend.up.railway.app'
 ]
 
 ACCESS_CONTROL_ALLOW_ORIGIN = ['http://localhost:5173', 'https://electro-mart-eta.vercel.app']
