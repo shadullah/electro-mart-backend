@@ -25,6 +25,7 @@ djangorestframework
 EasyProcess
 entrypoint2
 filelock
+gunicorn
 idna
 Jinja2
 Markdown
@@ -33,10 +34,12 @@ MarkupSafe
 mdurl
 MouseInfo
 mss
+packaging
 Pillow
 pipenv
 platformdirs
 psycopg2
+psycopg2-binary
 PyAutoGUI
 PyGetWindow
 Pygments
