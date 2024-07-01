@@ -2,8 +2,11 @@ from account.serializers import UserlistSerializer
 from rest_framework import serializers
 from rest_framework import viewsets
 from .models import Item
+from categories.models import Category
 
 class ItemSerializer(serializers.ModelSerializer):
+    category = serializers.SlugRelatedField(slug_field='slug', queryset=Category.objects.all())
+
     class Meta:
         model = Item
         fields = '__all__'
