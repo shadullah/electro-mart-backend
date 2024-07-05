@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'account',
     'seller',
     'categories',
+    'wishlist',
 
     'corsheaders',
     'rest_framework',
@@ -60,9 +61,8 @@ INSTALLED_APPS = [
 ]
 
 # my changes new
-# AUTH_USER_MODEL = 'account.CustomUser'
+# AUTH_USER_MODEL = 'account.User'
 
-# AUTH_USER_MODEL = 'account.CustomUser'
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:5173', 'https://electro-mart-eta.vercel.app/','https://electro-mart-backend.up.railway.app/'
